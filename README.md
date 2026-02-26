@@ -28,16 +28,43 @@ flowchart TD
 
 ## Quick Start
 
-```bash
-# Install the plugin from the marketplace
-/plugin marketplace add peteski22/claude-pragma
-/plugin install pragma@claude-pragma
+1. Add the marketplace:
+   ```
+   /plugin marketplace add peteski22/claude-pragma
+   ```
 
-# Then in any project:
-/setup-project
-```
+2. Install the plugin:
+   ```
+   /plugin install pragma@claude-pragma
+   ```
+
+3. Enable auto-update (recommended):
+   ```
+   /plugin
+   → Marketplaces tab → select claude-pragma → Enable auto-update
+   ```
+   Third-party marketplaces have auto-update **disabled** by default. Enabling it ensures you receive new versions automatically when Claude Code starts.
+
+4. Set up your project:
+   ```
+   /setup-project
+   ```
 
 > **Note:** Skills are shown as `/star-chamber (pragma)` in the CLI autocomplete. The short form `/star-chamber` is the easiest way to invoke them. The fully-qualified form `/pragma:star-chamber` also works.
+
+## Updating
+
+If you enabled auto-update in the Quick Start, new versions are fetched automatically when Claude Code starts and you'll be notified to restart your session.
+
+To update manually:
+
+```
+/plugin marketplace update claude-pragma
+```
+
+To check your current version, run `/plugin` and look under the **Installed** tab.
+
+See the [official docs on auto-updates](https://code.claude.com/docs/en/discover-plugins#configure-auto-updates) for more details.
 
 ### Example: Using /implement
 
@@ -167,7 +194,7 @@ In git worktrees, use `@import` (a Claude Code directive that includes another C
 
 ## Legacy Installation (Deprecated)
 
-The previous `make install` + `$CLAUDE_PRAGMA_PATH` approach is deprecated. Use the plugin marketplace instead. If migrating, remove the old symlinks and env var:
+The previous `make install` + `$CLAUDE_PRAGMA_PATH` approach is deprecated. Use the plugin marketplace instead — it handles updates automatically when auto-update is enabled (see [Quick Start](#quick-start)). If migrating, remove the old symlinks and env var:
 
 ```bash
 make uninstall
